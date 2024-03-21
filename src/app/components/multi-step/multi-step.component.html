@@ -1,0 +1,37 @@
+<div *ngIf="current === 0">
+  <form [formGroup]="firstFormGroup" (ngSubmit)="nextStep(firstFormGroup.value)">
+    <label>Name:</label>
+    <input nz-input formControlName="name" />
+    <button nz-button nzType="primary" nzShape="circle" (click)="addCross($event)">X</button><br>
+    <label>Gender:</label>
+    <input nz-input formControlName="gender" />
+    <button nz-button nzType="primary" nzShape="circle" (click)="addCross($event)">X</button><br>
+    <button nz-button nzType="primary" type="submit" [disabled]="!firstFormGroup.valid">Next</button>
+    
+  </form>
+</div>
+
+<div *ngIf="current === 1">
+  <form [formGroup]="secondFormGroup" (ngSubmit)="nextStep(secondFormGroup.value)">
+    <label>Address:</label>
+    <input nz-input formControlName="address" />
+    <button nz-button nzType="primary" nzShape="circle" (click)="addCross($event)">X</button><br>
+    <label>City:</label>
+    <input nz-input formControlName="city" />
+    <button nz-button nzType="primary" nzShape="circle" (click)="addCross($event)">X</button><br>
+    <button nz-button nzType="primary" type="submit" [disabled]="!secondFormGroup.valid">Next</button>
+  </form>
+</div>
+
+
+<div *ngIf="current === 2">
+  <form [formGroup]="thirdFormGroup" (ngSubmit)="submitForm(thirdFormGroup.value)">
+    <label>Profession:</label>
+    <input nz-input formControlName="profession" />
+    <button nz-button nzType="primary" nzShape="circle" (click)="addCross($event)">X</button><br>
+    <label>Experience:</label>
+    <input nz-input formControlName="experience" />
+    <button nz-button nzType="primary" nzShape="circle" (click)="addCross($event)">X</button><br>
+    <button nz-button nzType="primary" type="submit" [disabled]="!thirdFormGroup.valid">Submit</button>
+  </form>
+</div>

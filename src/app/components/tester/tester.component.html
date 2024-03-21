@@ -1,0 +1,24 @@
+<div [formGroup]="form">
+    <div *ngIf="currentStep === 1">
+      <!-- Step 1 -->
+      <input type="text" formControlName="step1Field">
+      <button (click)="clearField('step1Field')">Clear</button>
+      <button (click)="nextStep()">Next</button>
+    </div>
+    
+    <div *ngIf="currentStep === 2">
+      <!-- Step 2 -->
+      <input type="text" formControlName="step2Field">
+      <button (click)="clearField('step2Field')">Clear</button>
+      <button (click)="prevStep()">Previous</button>
+      <button (click)="nextStep()">Next</button>
+    </div>
+    
+    <div *ngIf="currentStep === 3">
+      <!-- Step 3 -->
+      <input type="text" formControlName="step3Field">
+      <button (click)="clearField('step3Field')">Clear</button>
+      <button (click)="prevStep()">Previous</button>
+      <button (click)="submit()">Submit</button>
+    </div>
+  </div>

@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    height: 100%;
+}
+
+.green-side {
+    flex: 1;
+    background-color: white;
+}
+
+.yellow-side {
+    flex: 1;
+    background-color: yellow;
+}
