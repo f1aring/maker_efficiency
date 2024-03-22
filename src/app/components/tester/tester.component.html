@@ -1,24 +1,32 @@
-<div [formGroup]="form">
-    <div *ngIf="currentStep === 1">
-      <!-- Step 1 -->
-      <input type="text" formControlName="step1Field">
-      <button (click)="clearField('step1Field')">Clear</button>
-      <button (click)="nextStep()">Next</button>
+
+
+<div *ngIf="current === 0">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="name">Name: </label>
+      <input type="text" formControlName="name" >
+      <button type="button" (click)="addCross($event, 'name')">X</button><br>
     </div>
-    
-    <div *ngIf="currentStep === 2">
-      <!-- Step 2 -->
-      <input type="text" formControlName="step2Field">
-      <button (click)="clearField('step2Field')">Clear</button>
-      <button (click)="prevStep()">Previous</button>
-      <button (click)="nextStep()">Next</button>
+    <div>
+      <label for="city">Gender: </label>
+      <input type="text" formControlName="city">
+      <button type="button" (click)="addCross($event, 'city')">X</button><br>
     </div>
-    
-    <div *ngIf="currentStep === 3">
-      <!-- Step 3 -->
-      <input type="text" formControlName="step3Field">
-      <button (click)="clearField('step3Field')">Clear</button>
-      <button (click)="prevStep()">Previous</button>
-      <button (click)="submit()">Submit</button>
+    <button type="submit" [disabled]="!myForm.valid">Submit</button>
+  </form>
+</div>
+<div *ngIf="current === 1">
+  <form [formGroup]="secondFormGroup" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="address">Address: </label>
+      <input type="text" formControlName="address" >
+      <button type="button" (click)="addCross($event, 'address')">X</button><br>
     </div>
-  </div>
+    <div>
+      <label for="city">City: </label>
+      <input type="text" formControlName="city">
+      <button type="button" (click)="addCross($event, 'city')">X</button><br>
+    </div>
+    <button type="submit" [disabled]="!secondFormGroup.valid">Submit</button>
+  </form>
+</div>

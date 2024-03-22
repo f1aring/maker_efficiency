@@ -18,6 +18,7 @@ import { ImageLoaderComponent } from './components/image-loader/image-loader.com
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { TesterComponent } from './components/tester/tester.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 registerLocaleData(uk);
 
 @NgModule({
@@ -26,7 +27,8 @@ registerLocaleData(uk);
     SidebarComponent,
     MultiStepComponent,
     ImageLoaderComponent,
-    TesterComponent
+    TesterComponent,
+    DynamicFormComponent
   ],
   imports: [
     BrowserModule,

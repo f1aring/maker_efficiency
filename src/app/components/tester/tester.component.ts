@@ -1,38 +1,62 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-tester',
   templateUrl: './tester.component.html',
-  styleUrl: './tester.component.css'
+  styleUrls: ['./tester.component.css']
 })
-export class TesterComponent {
-  form!: FormGroup;
-  currentStep: number = 1;
+export class TesterComponent implements OnInit {
+  formValue: any = {};
+  formValue2: any = {};
+  myForm!: FormGroup;
+  secondFormGroup!: FormGroup;
+  current = 0; 
+  constructor(private fb: FormBuilder) {}
 
-  constructor(private formBuilder: FormBuilder) { }
 
+  nextStep() {    
+    this.current++;
+  }
   ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      step1Field: ['', Validators.required],
-      step2Field: ['', Validators.required],
-      step3Field: ['', Validators.required]
+    this.myForm = this.fb.group({
+      name: ['', Validators.required],
+      gender: ['', Validators.required],
     });
+    this.secondFormGroup = this.fb.group({
+      address: ['', Validators.required],
+      city: ['', Validators.required],
+    });
+
+    // Initialize formValue with transformed form values
+    this.formValue = this.transformFormValue(this.myForm.value);
+    this.formValue2 = this.transformFormValue(this.secondFormGroup.value);
   }
 
-  nextStep() {
-    this.currentStep++;
+  onSubmit() {
+    if (this.myForm.valid || this.secondFormGroup.valid) {
+      console.log(this.formValue);
+      console.log(this.formValue2);
+    }
+    this.current++;
   }
 
-  prevStep() {
-    this.currentStep--;
+  transformFormValue(formValue: any): any {
+    const transformedFormValue: any = {};
+    for (const controlName of Object.keys(formValue)) {
+      transformedFormValue[controlName] = {
+        value: formValue[controlName],
+        status: true
+      };
+    }
+    return transformedFormValue;
   }
 
-  clearField(fieldName: string) {
-    this.form.get(fieldName)!.setValue('');
-  }
-
-  submit() {
-    // Handle form submission
-    console.log(this.form.value);
+  addCross(event: Event, controlName: string) {
+    event.preventDefault();
+    if (this.formValue && this.formValue[controlName]) {
+      this.formValue[controlName].status = !this.formValue[controlName].status;
+      console.log(this.formValue);
+    }
   }
 }

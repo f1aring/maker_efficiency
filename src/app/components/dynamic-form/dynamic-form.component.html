@@ -1,0 +1,19 @@
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <!-- Steps -->
+    <div *ngFor="let number of numbers">
+        <div *ngIf="currentStep === number">
+            <div *ngFor="let controlName of controlNames[number - 1]">
+              <label [for]="controlName">{{ controlName | titlecase }}:</label>
+              <input type="text" [formControlName]="controlName">
+            </div>
+            <div *ngIf="currentStep < numbers.length ">
+              <button type="button" (click)="goToStep(number + 1)">Next</button>
+            </div>
+            <div *ngIf="currentStep === numbers.length ">
+                <button type="submit" [disabled]="!myForm.valid">Submit</button>
+            </div>
+          
+          </div>
+    </div>
+  </form>
+  
