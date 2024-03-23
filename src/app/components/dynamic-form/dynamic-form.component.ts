@@ -7,9 +7,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrl: './dynamic-form.component.css'
 })
 export class DynamicFormComponent implements OnInit {
+  formValue: any = {};
+  
+  myForm!: FormGroup;
+  secondFormGroup!: FormGroup;
   formCount = 0;
   currentStep = 1;
-  myForm!: FormGroup;
+  
   controlNames = [['name', 'age'], ['day', 'height'], ['city', 'state'], ['country']]; // Grouped array of control names for multi-step
   numbers = [1,2, 3, 4]
   constructor(private fb: FormBuilder) {}
@@ -33,13 +37,24 @@ export class DynamicFormComponent implements OnInit {
 
   onSubmit() {
     if (this.myForm.valid) {
-      console.log('Form values:', this.myForm.value);
-      this.formCount++;
-      if (this.currentStep < this.controlNames.length) {
-        this.goToStep(this.currentStep + 1); // Go to the next step
-      } else {
-        // Form is complete, handle final submission here
-      }
+    let result: any = {};
+    for (let key in this.myForm.value) {
+        result[key] = {
+            value: this.myForm.value[key],
+            status: key in this.formValue ? this.formValue[key] : true
+        };
+    }
+    console.log(result);
     }
   }
+
+
+  addCross(event: Event, controlName: string) {
+    if (this.formValue[controlName] !== undefined) {
+        this.formValue[controlName] = !this.formValue[controlName];
+    } else {
+        this.formValue[controlName] = false; // Default to true if undefined
+    }
+    console.log('hi');
+}
 }

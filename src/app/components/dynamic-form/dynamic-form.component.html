@@ -5,6 +5,7 @@
             <div *ngFor="let controlName of controlNames[number - 1]">
               <label [for]="controlName">{{ controlName | titlecase }}:</label>
               <input type="text" [formControlName]="controlName">
+              <button type="button" (click)="addCross($event, controlName)">X</button><br>
             </div>
             <div *ngIf="currentStep < numbers.length ">
               <button type="button" (click)="goToStep(number + 1)">Next</button>
