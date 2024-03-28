@@ -6,6 +6,26 @@
               <label [for]="controlName">{{ controlName | titlecase }}:</label>
               <input type="text" [formControlName]="controlName">
               <button type="button" (click)="addCross($event, controlName)">X</button><br>
+              <button nz-button nzType="primary" (click)="showModal1()">
+                <span>Comment</span>
+              </button>
+              <br />
+              <br />
+        
+              <nz-modal [(nzVisible)]="isVisible" nzTitle="Custom Modal Title" (nzOnCancel)="handleCancel()">
+                <div *nzModalContent>
+                  <ul>
+                    <li><label><input type="checkbox" value="Spelling error"> Spelling error</label></li>
+                    <li><label><input type="checkbox" value="LGBTQ ALERT!"> LGBTQ ALERT!</label></li>
+                    <li><label><input type="checkbox" value="Noob"> Noob</label></li>
+                    <li><input type="text" formControlName="textInput"></li> <!-- Bind to form control -->
+                  </ul>
+                </div>
+                <div *nzModalFooter>
+                  <button nz-button nzType="default" (click)="submitModalValues($event, controlName)">Submit</button>
+                </div>
+              </nz-modal>
+              
             </div>
             <div *ngIf="currentStep < numbers.length ">
               <button type="button" (click)="goToStep(number + 1)">Next</button>

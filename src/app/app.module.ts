@@ -9,7 +9,7 @@ import { registerLocaleData } from '@angular/common';
 import uk from '@angular/common/locales/uk';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -22,6 +22,8 @@ import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.com
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { RedZoomModule } from 'ngx-red-zoom';
 import { ImageZoomComponent } from './components/image-zoom/image-zoom.component';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+
 registerLocaleData(uk);
 
 @NgModule({
@@ -44,7 +46,9 @@ registerLocaleData(uk);
     NzStepsModule,
     NzFormModule,
     NgxImageZoomModule,
-    RedZoomModule 
+    RedZoomModule ,
+    NzModalModule,
+    HttpClientModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: uk_UA },
