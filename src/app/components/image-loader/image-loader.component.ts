@@ -1,20 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2, ElementRef, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-image-loader',
   templateUrl: './image-loader.component.html',
-  styleUrl: './image-loader.component.css'
+  styleUrls: ['./image-loader.component.css']
 })
-export class ImageLoaderComponent {
-  index:number = 0;
-  img_src1: string[] = ["./assets/jabed","./assets/malek","./assets/mehedi"];
-  len1:number = this.img_src1.length;
-  img_src2: string[] = ["./assets/malek","./assets/mehedi"];
-  len2:number = this.img_src2.length;
-  img_src3: string[] = ["./assets/malek"];
-  len3:number = this.img_src3.length;
-  step = 1;
-  onSubmit(){
-    this.step++;
+export class ImageLoaderComponent implements AfterViewInit {
 
-  }}
+  yourThumbnailImage = 'https://res.cloudinary.com/dr3buczbc/image/upload/v1710750810/images/image2.png';
+
+  constructor(private renderer: Renderer2, private el: ElementRef) {}
+
+  moveMouseToCoordinates(x: number, y: number) {
+    const mouseEvent = new MouseEvent('mousemove', {
+      bubbles: true,
+      cancelable: true,
+      clientX: x,
+      clientY: y
+    });
+
+    this.el.nativeElement.dispatchEvent(mouseEvent);
+  }
+
+  ngAfterViewInit() {
+    const image = new Image();
+    image.onload = () => {
+      // Adjust these coordinates based on the position of your image
+      const imageX = 500; // X-coordinate of the image
+      const imageY = 1000; // Y-coordinate of the image
+
+      // Move mouse to the image coordinates
+      this.moveMouseToCoordinates(imageX, imageY);
+    };
+    image.src = this.yourThumbnailImage;
+  }
+}

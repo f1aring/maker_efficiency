@@ -19,6 +19,9 @@ import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzFormModule } from 'ng-zorro-antd/form';
 import { TesterComponent } from './components/tester/tester.component';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
+import { NgxImageZoomModule } from 'ngx-image-zoom';
+import { RedZoomModule } from 'ngx-red-zoom';
+import { ImageZoomComponent } from './components/image-zoom/image-zoom.component';
 registerLocaleData(uk);
 
 @NgModule({
@@ -28,7 +31,8 @@ registerLocaleData(uk);
     MultiStepComponent,
     ImageLoaderComponent,
     TesterComponent,
-    DynamicFormComponent
+    DynamicFormComponent,
+    ImageZoomComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,9 @@ registerLocaleData(uk);
     NzBreadCrumbModule,
     ReactiveFormsModule,
     NzStepsModule,
-    NzFormModule
+    NzFormModule,
+    NgxImageZoomModule,
+    RedZoomModule 
   ],
   providers: [
     { provide: NZ_I18N, useValue: uk_UA },
