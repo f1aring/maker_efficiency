@@ -1,5 +1,6 @@
 import { Component, OnInit,  Input  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NzButtonSize } from 'ng-zorro-antd/button';
 import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
@@ -8,6 +9,7 @@ import { NzModalService } from 'ng-zorro-antd/modal';
   styleUrls: ['./dynamic-form.component.css']
 })
 export class DynamicFormComponent implements OnInit {
+  size: NzButtonSize = 'small';
   formValue: any = {};
   obj: any = {};
   myForm!: FormGroup;
@@ -15,8 +17,10 @@ export class DynamicFormComponent implements OnInit {
   formCount = 0;
   currentStep = 1;
   // controlNames = [['name', 'age'], ['day', 'height'], ['city', 'state'], ['country']];
+  @Input() controlNameValue!: { [key: string]: string };
+  @Input() array_number!: number[];
   @Input() controlNames!: string[][];
-  numbers = [1, 2, 3, 4];
+  
   textInputChecked = false;
 
   constructor(private fb: FormBuilder, private modalService: NzModalService) {}
@@ -25,6 +29,16 @@ export class DynamicFormComponent implements OnInit {
     this.myForm = this.fb.group({});
     this.addControls();
     this.addTextInputControl(); // Add text input control
+  
+    // Set default values for form controls
+    this.setDefaultValues();
+  }
+  
+  setDefaultValues() {
+    // Assuming controlNameValue contains the default values
+    if (this.controlNameValue) {
+      this.myForm.patchValue(this.controlNameValue);
+    }
   }
 
   addControls() {
@@ -109,5 +123,8 @@ export class DynamicFormComponent implements OnInit {
    
     this.isVisible = false;
     
+  }
+  logInputName(inputName: string) {
+    console.log("Input name:", inputName);
   }
 }

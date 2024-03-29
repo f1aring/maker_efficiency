@@ -1,12 +1,20 @@
-<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+<div class="container">
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
     <!-- Steps -->
-    <div *ngFor="let number of numbers">
-        <div *ngIf="currentStep === number">
-            <div *ngFor="let controlName of controlNames[number - 1]">
-              <label [for]="controlName">{{ controlName | titlecase }}:</label>
-              <input type="text" [formControlName]="controlName">
-              <button type="button" (click)="addCross($event, controlName)">X</button><br>
-              <button nz-button nzType="primary" (click)="showModal1()">
+    <div *ngIf="array_number.length !== 0">
+      
+      <div *ngFor="let number of array_number">
+        <div *ngIf="currentStep === number" >
+            <div *ngFor="let controlName of controlNames[number - 1]" class="card">
+              <label [for]="controlName">{{ controlName | titlecase }}:</label><br>
+              <div class="wrapper">
+                 <input type="text" [formControlName]="controlName" class="input-field" (focus)="logInputName(controlName)">
+              <button nz-button nzType="primary" [nzSize]="size" nzShape="circle" (click)="addCross($event, controlName)" class="cross">X</button><br>
+              </div>
+              <!-- <input type="text" [formControlName]="controlName" class="input-field">
+              <button nz-button nzType="primary" [nzSize]="size" nzShape="circle" (click)="addCross($event, controlName)" class="cross">X</button><br> -->
+              <button nz-button nzType="primary" (click)="showModal1()" class="button">
                 <span>Comment</span>
               </button>
               <br />
@@ -27,14 +35,19 @@
               </nz-modal>
               
             </div>
-            <div *ngIf="currentStep < numbers.length ">
-              <button type="button" (click)="goToStep(number + 1)">Next</button>
+            <div *ngIf="currentStep < array_number.length ">
+              <button nz-button nzType="primary" class="submit-button"  (click)="goToStep(number + 1)">Next</button>
             </div>
-            <div *ngIf="currentStep === numbers.length ">
-                <button type="submit" [disabled]="!myForm.valid">Submit</button>
+            <div *ngIf="currentStep === array_number.length ">
+                <button type="submit" nz-button nzType="primary" class="submit-button" [disabled]="!myForm.valid">Submit</button>
             </div>
           
           </div>
     </div>
+
+    </div>
+    
   </form>
+</div>
+
   

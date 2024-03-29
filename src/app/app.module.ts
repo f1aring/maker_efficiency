@@ -23,6 +23,12 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { RedZoomModule } from 'ngx-red-zoom';
 import { ImageZoomComponent } from './components/image-zoom/image-zoom.component';
 import { NzModalModule } from 'ng-zorro-antd/modal';
+import { CheckerComponent } from './components/checker/checker.component';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+
+
 
 registerLocaleData(uk);
 
@@ -34,7 +40,8 @@ registerLocaleData(uk);
     ImageLoaderComponent,
     TesterComponent,
     DynamicFormComponent,
-    ImageZoomComponent
+    ImageZoomComponent,
+    CheckerComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,10 @@ registerLocaleData(uk);
     NgxImageZoomModule,
     RedZoomModule ,
     NzModalModule,
-    HttpClientModule
+    HttpClientModule,
+    NzButtonModule,
+    NzCarouselModule,
+    NzRadioModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: uk_UA },
