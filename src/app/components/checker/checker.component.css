@@ -10,5 +10,6 @@
 
 .yellow-side {
     flex: 1;
-    background-color: yellow;
+    background-color: rgb(155, 153, 153);
+    width: 50%;
 }

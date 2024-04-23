@@ -27,6 +27,7 @@ import { CheckerComponent } from './components/checker/checker.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { WriteComponent } from './components/write/write.component';
 
 
 
@@ -41,7 +42,8 @@ registerLocaleData(uk);
     TesterComponent,
     DynamicFormComponent,
     ImageZoomComponent,
-    CheckerComponent
+    CheckerComponent,
+    WriteComponent
   ],
   imports: [
     BrowserModule,

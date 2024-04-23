@@ -14,14 +14,14 @@ export class CheckerComponent {
     
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.createArray(Object.keys(this.controlNameValue).length);
-    console.log(this.array_number)
+    this.createArray(Object.keys(this.controlNames).length);
+    //console.log(this.array_number)
     // this.customerService.searchCustomer("987654321", "9876543210").subscribe((data) => {
     //   console.log(data)
     // });
   }
   controlNameValue = {name: 'Arman', age: '25', day : '7', height: '180', city: 'Dhaka', state: 'Dhaka', country: 'Bangladesh'};		
-  controlNames = [['name', 'age'], ['day', 'height'], ['city', 'state'], ['country']];
+  controlNames = [['name'], ['day'], ['city'], ['country']];
  
 
 

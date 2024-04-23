@@ -22,6 +22,7 @@ export class DynamicFormComponent implements OnInit {
   @Input() controlNames!: string[][];
   
   textInputChecked = false;
+  controlName!: string;
 
   constructor(private fb: FormBuilder, private modalService: NzModalService) {}
 
@@ -29,7 +30,7 @@ export class DynamicFormComponent implements OnInit {
     this.myForm = this.fb.group({});
     this.addControls();
     this.addTextInputControl(); // Add text input control
-  
+    console.log(this.array_number)
     // Set default values for form controls
     this.setDefaultValues();
   }
@@ -127,4 +128,21 @@ export class DynamicFormComponent implements OnInit {
   logInputName(inputName: string) {
     console.log("Input name:", inputName);
   }
+  
+  logValuesAndComments(controlName: string) {
+    
+    const control = this.myForm.get(controlName);
+    console.log(controlName)
+    if (control && control.valid) {
+      
+      const result: any = {};
+      result[controlName] = {
+        value: control.value,
+        status: controlName in this.formValue ? this.formValue[controlName] : true,
+        comments: controlName in this.obj ? this.obj[controlName] : []
+      };
+      console.log(result);
+    }
+  }
+  
 }

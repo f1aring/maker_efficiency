@@ -36,7 +36,10 @@
               
             </div>
             <div *ngIf="currentStep < array_number.length ">
-              <button nz-button nzType="primary" class="submit-button"  (click)="goToStep(number + 1)">Next</button>
+              <!-- <button nz-button nzType="primary" class="submit-button"  (click)="goToStep(number + 1)">Next</button> -->
+              <button nz-button nzType="primary" class="submit-button" (click)="goToStep(number + 1); logValuesAndComments(controlName)">Next</button>
+
+
             </div>
             <div *ngIf="currentStep === array_number.length ">
                 <button type="submit" nz-button nzType="primary" class="submit-button" [disabled]="!myForm.valid">Submit</button>
