@@ -36,6 +36,7 @@ export class DynamicFormComponent implements OnInit {
   
 
   textInputChecked = false;
+  controlName!: string;
 
   constructor(private fb: FormBuilder, private modalService: NzModalService, private writeService: WriteService, private sharedService: SenderService) {}
 
@@ -195,4 +196,21 @@ export class DynamicFormComponent implements OnInit {
       }
     }
   }
+  
+  logValuesAndComments(controlName: string) {
+    
+    const control = this.myForm.get(controlName);
+    console.log(controlName)
+    if (control && control.valid) {
+      
+      const result: any = {};
+      result[controlName] = {
+        value: control.value,
+        status: controlName in this.formValue ? this.formValue[controlName] : true,
+        comments: controlName in this.obj ? this.obj[controlName] : []
+      };
+      console.log(result);
+    }
+  }
+  
 }
