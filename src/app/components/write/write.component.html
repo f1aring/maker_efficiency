@@ -1,0 +1,34 @@
+<div class="container">
+    <div *ngIf="loading; else content" class="loading-indicator">
+      Loading...
+    </div>
+    <ng-template #content>
+      <div class="left-side">
+        <!-- Angular component 1 -->
+        <app-dynamic-form  
+          [controlNames]="controlNames"
+          [array_number]="array_number"
+          [supportingValues] = "supportingValues"
+          [field_id] = "field_id"
+          [work_order_id] = "work_order_id"
+          [fieldsId] = "fieldsId"
+
+          [customer_field_details] = "customer_field_details"
+
+          
+          >
+
+          
+        </app-dynamic-form>
+      </div>
+      <div class="yellow-side">
+        <!-- Angular component 2 -->
+        <app-image-loader
+          [image_array] = "image_array"
+        >
+
+        </app-image-loader>
+      </div>
+    </ng-template>
+  </div>
+  

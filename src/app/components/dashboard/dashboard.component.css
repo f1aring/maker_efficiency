@@ -1,0 +1,20 @@
+.container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .info-item {
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .info-item h5 {
+    margin-right: 5px;
+  }

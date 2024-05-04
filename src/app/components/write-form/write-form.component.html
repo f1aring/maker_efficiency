@@ -1,0 +1,5 @@
+<form [formGroup]="step1Form" (ngSubmit)="goToNextStep()">
+    <input type="text" formControlName="name" placeholder="Name">
+    <input type="email" formControlName="email" placeholder="Email">
+    <button type="submit" [disabled]="step1Form.invalid">Next</button>
+  </form>

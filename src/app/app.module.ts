@@ -27,7 +27,12 @@ import { CheckerComponent } from './components/checker/checker.component';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
-
+import { WriteComponent } from './components/write/write.component';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { WriteFormComponent } from './components/write-form/write-form.component';
+import { ReadWriteComponent } from './components/read-write/read-write.component';
+import { ReadWriteDynamicComponent } from './components/read-write-dynamic/read-write-dynamic.component';
 
 
 registerLocaleData(uk);
@@ -41,7 +46,12 @@ registerLocaleData(uk);
     TesterComponent,
     DynamicFormComponent,
     ImageZoomComponent,
-    CheckerComponent
+    CheckerComponent,
+    WriteComponent,
+    DashboardComponent,
+    WriteFormComponent,
+    ReadWriteComponent,
+    ReadWriteDynamicComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +68,8 @@ registerLocaleData(uk);
     HttpClientModule,
     NzButtonModule,
     NzCarouselModule,
-    NzRadioModule
+    NzRadioModule,
+    NzIconModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: uk_UA },
